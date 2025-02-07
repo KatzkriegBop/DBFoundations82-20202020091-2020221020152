@@ -1,0 +1,27 @@
+from UDSQL.utils.constants import FIELD_SEPARATOR, ROW_SEPARATOR
+
+class FileHandler:
+    def __init__(self, filename):
+        self.filename = filename
+
+    def read_all(self):
+        try:
+            with open(self.filename, 'r', encoding='utf-8') as f:
+                content = f.read()
+                return content.split(ROW_SEPARATOR) if content else []
+        except FileNotFoundError:
+            return []
+
+    def write_headers(self, headers):
+        with open(self.filename, 'w', encoding='utf-8') as f:
+            f.write(FIELD_SEPARATOR.join(headers))
+
+    def write_all(self, rows):
+        with open(self.filename, 'w', encoding='utf-8') as f:
+            f.write(ROW_SEPARATOR.join(rows))
+
+    def append_row(self, row):
+        current_content = self.read_all()
+        current_content.append(row)
+        self.write_all(current_content)
+        return "Datos insertados exitosamente"

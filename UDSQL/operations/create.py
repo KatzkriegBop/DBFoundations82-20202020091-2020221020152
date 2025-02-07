@@ -1,6 +1,6 @@
-from core.table import table
-from core.metadata import metadataManager
-class create_operation:
+from UDSQL.core.table import table
+# from metadata import metadataManager
+class CreateOperation:
     @staticmethod
     def execute(database,table_name,columns):
         if table_name in database.metadata:

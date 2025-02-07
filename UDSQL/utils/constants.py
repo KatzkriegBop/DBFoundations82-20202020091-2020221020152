@@ -1,0 +1,3 @@
+FIELD_SEPARATOR = "||"
+ROW_SEPARATOR = "@@"
+METADATA_FILE = "metadata.pkl"
