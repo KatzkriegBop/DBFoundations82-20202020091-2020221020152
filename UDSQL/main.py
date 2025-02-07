@@ -102,13 +102,14 @@ class UDSQLShell(cmd.Cmd):
                     return
             result = SelectOperation.execute(self.db, table_name, columns, condition)
             if isinstance(result, list):
-                for row in result:
-                    print(row)
+                if result:  # Verifica si la lista no está vacía
+                    for row in result:
+                        print(row)
+                else:
+                    print("No se encontraron registros.")
             else:
-                print(result)
-        except Exception as e:
-            print(f"Error: {str(e)}")
-                
+                print(result)  # Imprime mensaje de error si `result` es un string
+
                 
     def do_update(self, arg):
         """Actualizar datos: UPDATE nombre_tabla col1=valor1 col2=valor2 ... [WHERE col=val]"""
