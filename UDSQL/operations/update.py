@@ -5,7 +5,7 @@ class UpdateOperation:
             return "Error: La tabla no existe"
 
         table = database.tables[table_name]
-        rows = table.file_handler.read_all()
+        rows = table.file_headler.read_all()
         updated_rows = []
         updates_count = 0
 
@@ -18,5 +18,5 @@ class UpdateOperation:
             
             updated_rows.append(table.dict_to_row(row_dict))
 
-        table.file_handler.write_all(updated_rows)
+        table.file_headler.write_all(updated_rows)
         return f"Actualizados {updates_count} registros"

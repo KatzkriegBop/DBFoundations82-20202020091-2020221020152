@@ -5,7 +5,7 @@ class DeleteOperation:
             return "Error: Table doesn't exist"
 
         table = database.tables[table_name]
-        rows = table.file_handler.read_all()
+        rows = table.file_headler.read_all()
         kept_rows = []
         deleted_count = 0
 
@@ -17,5 +17,5 @@ class DeleteOperation:
             else:
                 deleted_count += 1
 
-        table.file_handler.write_all(kept_rows)
+        table.file_headler.write_all(kept_rows)
         return f"{deleted_count} deleted logs"
