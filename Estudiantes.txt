@@ -1,1 +1,1 @@
-nombre||edad||promedio
+nombre||edad||promedio@@Juan||20||4.5

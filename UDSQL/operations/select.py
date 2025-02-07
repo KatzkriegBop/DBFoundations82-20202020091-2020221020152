@@ -5,7 +5,7 @@ class SelectOperation:
             return "Error: Table doesn't exist"
 
         table = database.tables[table_name]
-        rows = table.file_handler.read_all()
+        rows = table.file_headler.read_all()
         result = []
 
         for row in filter(None, rows):
