@@ -4,13 +4,21 @@ class FileHandler:
     def __init__(self, filename):
         self.filename = filename
 
-    def read_all(self):
-        try:
-            with open(self.filename, 'r', encoding='utf-8') as f:
-                content = f.read()
-                return content.split(ROW_SEPARATOR) if content else []
-        except FileNotFoundError:
-            return []
+def read_all(self):
+    try:
+        with open(self.filename, 'r', encoding='utf-8') as f:
+            content = f.read().strip()
+            if not content:
+                return []
+            
+            rows = content.split(ROW_SEPARATOR)
+            deserialized_rows = [self.deserialize(row) for row in rows]
+            
+            print(f"📄 Datos leídos desde {self.filename}: {deserialized_rows}")  # Debug
+            return deserialized_rows
+    except FileNotFoundError:
+        return []
+
 
     def write_headers(self, headers):
         with open(self.filename, 'w', encoding='utf-8') as f:
