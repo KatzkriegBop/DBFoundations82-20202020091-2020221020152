@@ -2,21 +2,20 @@ from core.database import table
 
 class InsertOperation:
     @staticmethod
-    def execute(database, table_name, columns=None, condition=None):
-        if table_name not in database.metadata:
+    def execute(database, table_name, values):
+        if table_name not in database.tables:
             return "Error: Table doesn't exist"
 
         table = database.tables[table_name]
-        rows = table.read_all_rows()
-        result = []
 
-        for row in filter(None, rows):
-            row_dict = table.row_to_dict(row)
-            
-            if condition is None or condition(row_dict):
-                if columns is None:
-                    result.append(row_dict)
-                else:
-                    result.append({col: row_dict[col] for col in columns if col in row_dict})
+        # Validar que las columnas existen en la tabla
+        table_columns = table.columns  # Asumiendo que la tabla tiene un atributo 'columns'
+        for col in values.keys():
+            if col not in table_columns:
+                return f"Error: Column '{col}' does not exist in table '{table_name}'"
 
-        return result
+        # Insertar la nueva fila
+        success = table.insert(values)  # Asumiendo que la tabla tiene un método insert()
+        if success:
+            return "Insert successful"
+        return "Error: Insert failed"
