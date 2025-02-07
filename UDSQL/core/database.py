@@ -1,5 +1,5 @@
-from UDSQL.core.metadata import metadataManager
-from UDSQL.core.table import table
+from .metadata import metadataManager
+from .table import table
 
 class database:
     def __init__(self):

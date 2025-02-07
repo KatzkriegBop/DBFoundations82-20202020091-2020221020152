@@ -1,6 +1,6 @@
 import pickle
 import os
-from UDSQL.utils.constants import METADATA_FILE
+from utils.constants import METADATA_FILE
 
 class metadataManager:
     @staticmethod
@@ -10,5 +10,5 @@ class metadataManager:
                 return pickle.load(f)
         return {}
     def saveMetadata(self, metadata):
-        with open(metadata, 'wb') as f:
-            pickle.dump(metadata,f) 
+        with open(METADATA_FILE, 'wb') as f:
+            pickle.dump(metadata, f)

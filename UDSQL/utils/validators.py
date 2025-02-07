@@ -13,6 +13,8 @@ def validate_values(values, column_types):
                 float(val)
             elif column_types[col] == 'bool':
                 bool(val)
+            elif column_types[col] == 'str':
+                str(val)
         except ValueError:
             return False
     return True

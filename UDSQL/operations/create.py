@@ -1,4 +1,4 @@
-from UDSQL.core.table import table
+from core.table import table
 # from metadata import metadataManager
 class CreateOperation:
     @staticmethod

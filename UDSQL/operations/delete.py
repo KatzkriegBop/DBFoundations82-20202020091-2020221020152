@@ -2,7 +2,7 @@ class DeleteOperation:
     @staticmethod
     def execute(database, table_name, condition=None):
         if table_name not in database.metadata:
-            return "Error: La tabla no existe"
+            return "Error: Table doesn't exist"
 
         table = database.tables[table_name]
         rows = table.file_handler.read_all()
@@ -18,4 +18,4 @@ class DeleteOperation:
                 deleted_count += 1
 
         table.file_handler.write_all(kept_rows)
-        return f"Eliminados {deleted_count} registros"
+        return f"{deleted_count} deleted logs"

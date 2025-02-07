@@ -1,4 +1,4 @@
-from UDSQL.utils.constants import FIELD_SEPARATOR, ROW_SEPARATOR
+from .constants import FIELD_SEPARATOR, ROW_SEPARATOR
 
 class FileHandler:
     def __init__(self, filename):
@@ -24,4 +24,4 @@ class FileHandler:
         current_content = self.read_all()
         current_content.append(row)
         self.write_all(current_content)
-        return "Datos insertados exitosamente"
+        return "Data inserted successfully"

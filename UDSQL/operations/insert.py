@@ -1,11 +1,13 @@
+from core.database import table
+
 class InsertOperation:
     @staticmethod
     def execute(database, table_name, columns=None, condition=None):
         if table_name not in database.metadata:
-            return "Error: La tabla no existe"
+            return "Error: Table doesn't exist"
 
         table = database.tables[table_name]
-        rows = table.file_handler.read_all()
+        rows = table.read_all_rows()
         result = []
 
         for row in filter(None, rows):
