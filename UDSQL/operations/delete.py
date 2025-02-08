@@ -13,11 +13,11 @@ class DeleteOperation:
             row_dict = table.row_to_dict(row)
             
             if condition is None or not condition(row_dict):
-                kept_rows.append(row)
+                kept_rows.append(table.dict_to_row(row_dict))
             else:
                 deleted_count += 1
         if kept_rows:
-            table.file_handler.write_all(kept_rows)
+            table.file_headler.write_all(kept_rows)
             return f"{deleted_count} logs deleted."
         else:
             return "No logs to delete."
