@@ -81,7 +81,7 @@ class UDSQLShell(cmd.Cmd):
                 return
             parts = arg.split()
             table_name = parts[0]
-            columns = {}
+            columns = []
             where_index = -1
             for i, part in enumerate(parts[1:],1):
                 if part.upper() == 'WHERE':

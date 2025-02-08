@@ -9,7 +9,7 @@ class table:
     def get_Headers(self):
         return list(self.columns.keys())
     def row_to_dict(self, row):
-        values = row.split("FILE_SEPARATOR")
+        values = FIELD_SEPARATOR.join(row).split(FIELD_SEPARATOR)
         return dict(zip(self.get_Headers(),values))
     def dict_to_row(self, row_dict):
         return FIELD_SEPARATOR.join(str(row_dict.get(col,'')) for col in self.get_Headers())
