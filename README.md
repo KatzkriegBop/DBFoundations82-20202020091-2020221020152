@@ -18,6 +18,26 @@ UDSQL is a simple database system that implements CRUD operations (Create, Read,
 
 ## Project Structure
 
-UDSQL/ │ ├── CORE/ # This module is for the creation and configuration of the database system │ ├── init.py │ ├── database.py # Contains the logic for handling tables and database operations │ ├── metadata.py # Handles the metadata information of the database │ └── table.py # Defines table structure and data handling │ ├── OPERATIONS/ # This module is responsible for performing all the database operations │ ├── init.py │ ├── create.py # Handles table creation │ ├── delete.py # Responsible for deleting records from the database │ ├── insert.py # Handles inserting data into tables │ ├── select.py # Responsible for querying and selecting data │ ├── update.py # Handles updating existing data in tables │ ├── UTILS/ # This module ensures syntax validation and other utility functions │ ├── init.py │ ├── constant.py # Contains constant values used throughout the project │ ├── file_handler.py # Responsible for reading and writing files │ └── validators.py # Contains functions to validate user inputs and data │ ├── init.py # Marks the root directory of the UDSQL package └── main.py # Main entry point to run the UDSQL shell
-
-Students.txt # An example of a database created with UDSQL README.md # Project documentation file
+- The project is organized as follows:
+- UDSQL
+- CORE #This module is for the creation and configuration
+-- __init__.py
+-- database.py
+-- metadata.py
+-- table.py
+- OPERATIONS #This module is to perform all database operations. 
+-- __init__.py
+-- create.py
+-- delete.py
+-- insert.py
+-- select.py
+-- uptade.py
+- UTILS #This module is responsible for ensuring that the syntax is valid 
+-- __init__.py
+-- constant.py
+-- file_headler.py
+-- validators.py
+-- __init__.py
+-- main.py
+- Students.txt #This is explame of database created with UDSQL
+- README.md
