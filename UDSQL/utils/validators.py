@@ -9,14 +9,14 @@ def validate_values(values, column_types):
         try:
             expected_type = column_types[col]
             if expected_type == 'int':
-                int(val)  # Intenta convertirlo a entero
+                int(val)  # Tries to convert it to integer
             elif expected_type == 'float':
-                float(val)  # Intenta convertirlo a flotante
+                float(val)  # Tried to convert it to float
             elif expected_type == 'bool':
                 if str(val).lower() not in {"true", "false", "1", "0"}:
                     return False
             elif expected_type == 'str':
-                if not isinstance(val, str):  # Debe ser string
+                if not isinstance(val, str):  # Must be a string
                     return False
         except ValueError:
             return False
