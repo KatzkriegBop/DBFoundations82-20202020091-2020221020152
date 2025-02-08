@@ -109,7 +109,8 @@ class UDSQLShell(cmd.Cmd):
                     print("No se encontraron registros.")
             else:
                 print(result)  # Imprime mensaje de error si `result` es un string
-
+        except ValueError as e:
+            print(f"Value Error: {str(e)}")
                 
     def do_update(self, arg):
         """Actualizar datos: UPDATE nombre_tabla col1=valor1 col2=valor2 ... [WHERE col=val]"""

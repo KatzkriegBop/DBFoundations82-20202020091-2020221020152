@@ -4,13 +4,13 @@ class FileHandler:
     def __init__(self, filename):
         self.filename = filename
 
-def read_all(self):
-    try:
-        with open(self.filename, 'r', encoding='utf-8') as f:
-            content = f.readlines()
-            return [line.strip().split(ROW_SEPARATOR) for line in content if line.strip()]
-    except FileNotFoundError:
-        return []
+    def read_all(self):
+        try:
+            with open(self.filename, 'r', encoding='utf-8') as f:
+                content = f.readlines()
+                return [line.strip().split(ROW_SEPARATOR) for line in content if line.strip()]
+        except FileNotFoundError:
+            return []
 
 
 
