@@ -7,20 +7,21 @@ from operations.update import UpdateOperation
 from operations.delete import DeleteOperation
 
 class UDSQLShell(cmd.Cmd):
-    intro = 'Bienvenido a UDSQL. Escribe help o ? para listar los comandos.\n'
+    intro = 'Welcome to UDSQL. Type help or "?" to list the commands.\n'
     prompt = 'UDSQL> '
 
+    #Constructor method
     def __init__(self):
         super().__init__()
         self.db = database()
 
     def do_exit(self, _):
-        """Salir del programa."""
-        print("¡Hasta luego!")
+        """Exit program"""
+        print("¡See you next time!")
         return True
 
     def do_create(self, arg):
-        """Crear una nueva tabla: CREATE nombre_tabla col1:tipo col2:tipo ..."""
+        """Create a new table: CREATE table_name col1:type col2:type ..."""
         try:
             if not arg:
                 print("Error: Must specify table name and columns")
@@ -48,7 +49,7 @@ class UDSQLShell(cmd.Cmd):
             print(f"Value Error: {str(e)}")
             
     def do_insert(self, arg):
-        """Insertar datos: INSERT nombre_tabla col1=valor1 col2=valor2 ..."""
+        """Insert data: INSERT table_name col1=value1 col2=value2 ..."""
         try:
             if not arg:
                 print("Error: Must specify table name and values")
@@ -73,7 +74,7 @@ class UDSQLShell(cmd.Cmd):
             print(f"Value Error: {str(e)}")
 
     def do_select(self, arg):
-        """Seleccionar datos: SELECT nombre_tabla [col1 col2 ...] [WHERE col=val]"""
+        """Select data: SELECT table_name [col1 col2 ...] [WHERE col=val]"""
         try:
             if not arg:
                 print("Error: Must specify table name")
@@ -102,18 +103,18 @@ class UDSQLShell(cmd.Cmd):
                     return
             result = SelectOperation.execute(self.db, table_name, columns, condition)
             if isinstance(result, list):
-                if result:  # Verifica si la lista no está vacía
+                if result:  # Verifies if list is not empty
                     for row in result:
                         print(row)
                 else:
-                    print("No se encontraron registros.")
+                    print("No logs found.")
             else:
-                print(result)  # Imprime mensaje de error si `result` es un string
+                print(result)  # Prints result message
         except ValueError as e:
             print(f"Value Error: {str(e)}")
                 
     def do_update(self, arg):
-        """Actualizar datos: UPDATE nombre_tabla col1=valor1 col2=valor2 ... [WHERE col=val]"""
+        """Update data: UPDATE table_name col1=value1 col2=value2 ... [WHERE col=val]"""
         try:
             if not arg:
                 print("Error: Must specify table name and values")
@@ -151,7 +152,7 @@ class UDSQLShell(cmd.Cmd):
         except ValueError as e:
             print(f"Value Error: {str(e)}")
     def do_delete(self, arg):
-        """Eliminar datos: DELETE nombre_tabla [WHERE col=val]"""
+        """Delete data: DELETE table_name [WHERE col=val]"""
         try:
             if not arg:
                 print("Error: Must specify table name")

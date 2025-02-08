@@ -8,14 +8,14 @@ class InsertOperation:
 
         table = database.tables[table_name]
 
-        # Validar que las columnas existen en la tabla
-        table_columns = table.columns  # Asumiendo que la tabla tiene un atributo 'columns'
+        # Check if the columns exist in the table
+        table_columns = table.columns  # Asuming that the table has a property columns
         for col in values.keys():
             if col not in table_columns:
                 return f"Error: Column '{col}' does not exist in table '{table_name}'"
 
-        # Insertar la nueva fila
-        success = table.insert(values)  # Asumiendo que la tabla tiene un método insert()
+        # Insert the values into the table
+        success = table.insert(values)  # Asuming that the table has a method insert
         if success:
             return "Insert successful"
         return "Error: Insert failed"

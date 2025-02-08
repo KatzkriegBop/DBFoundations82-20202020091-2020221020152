@@ -15,12 +15,12 @@ class table:
         return FIELD_SEPARATOR.join(str(row_dict.get(col,'')) for col in self.get_Headers())
     def insert(self, values):
         try:
-            row = FIELD_SEPARATOR.join(str(values[col]) for col in self.columns)  # Usa un separador adecuado
+            row = FIELD_SEPARATOR.join(str(values[col]) for col in self.columns)  # Uses the field separator to join the values
             with open(self.file_headler.filename, 'a', encoding='utf-8') as f:
-                f.write(row + '\n')  # Asegurar que cada fila es una línea nueva
+                f.write(row + '\n')  # Make sure to add a newline character
             return True
         except Exception as e:
-            print(f"Error en la inserción: {str(e)}")
+            print(f"Error in insertion: {str(e)}")
             return False
 
     def select(self, columns=None, condition=None):
@@ -45,7 +45,7 @@ class table:
                 updates_count += 1
             updated_rows.append(self.dict_to_row(row_dict))
         self.file_headler.write_all(updated_rows)
-        return f"Actualizados {updates_count} registros"
+        return f"{updates_count} logs updated."
     def delete(self, condition=None):
         rows = self.file_headler.read_all()
         kept_rows = []
@@ -57,7 +57,7 @@ class table:
             else:
                 deleted_count += 1
         self.file_headler.write_all(kept_rows)
-        return f"Eliminados {deleted_count} registros"
+        return f"{deleted_count} logs deleted."
     def read_all_rows(self):
         return self.file_headler.read_all()
     
