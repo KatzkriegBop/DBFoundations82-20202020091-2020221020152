@@ -71,5 +71,4 @@ The project is organized as follows:
 - `Students.txt` 
 - `README.md`
 
-Students.txt # An example of a database created with UDSQL README.md # Project documentation file
->>>>>>> d81a4ef4c6429dbbd5aec1d9f10c63e7165c0cca
+Students.txt # An example of a database created with UDSQL README.md # 
