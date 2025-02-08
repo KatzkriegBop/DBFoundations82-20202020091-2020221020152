@@ -18,6 +18,7 @@ UDSQL is a simple database system that implements CRUD operations (Create, Read,
 
 ## Project Structure
 
+<<<<<<< HEAD
 - The project is organized as follows:
 - UDSQL
 - CORE #This module is for the creation and configuration
@@ -41,3 +42,34 @@ UDSQL is a simple database system that implements CRUD operations (Create, Read,
 -- main.py
 - Students.txt #This is explame of database created with UDSQL
 - README.md
+=======
+## Project Structure  
+
+The project is organized as follows:  
+
+- **UDSQL/**  
+  - **CORE/** _
+    - `__init__.py`  
+    - `database.py`
+    - `metadata.py` 
+    - `table.py`
+  - **OPERATIONS/**
+    - `__init__.py`  
+    - `create.py`
+    - `delete.py`
+    - `insert.py`
+    - `select.py`
+    - `update.py`
+  - **UTILS/** 
+    - `__init__.py`  
+    - `constant.py`
+    - `file_handler.py`
+    - `validators.py`
+  - `__init__.py`
+  - `main.py`
+
+- `Students.txt` 
+- `README.md`
+
+Students.txt # An example of a database created with UDSQL README.md # Project documentation file
+>>>>>>> d81a4ef4c6429dbbd5aec1d9f10c63e7165c0cca
