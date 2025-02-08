@@ -14,9 +14,15 @@ class table:
     def dict_to_row(self, row_dict):
         return FIELD_SEPARATOR.join(str(row_dict.get(col,'')) for col in self.get_Headers())
     def insert(self, values):
-        row = self.dict_to_row(values)
-        self.file_headler.append_row(row)
-        return "Datos insertados exitosamente"
+        try:
+            row = FIELD_SEPARATOR.join(str(values[col]) for col in self.columns)  # Usa un separador adecuado
+            with open(self.file_headler.filename, 'a', encoding='utf-8') as f:
+                f.write(row + '\n')  # Asegurar que cada fila es una línea nueva
+            return True
+        except Exception as e:
+            print(f"Error en la inserción: {str(e)}")
+            return False
+
     def select(self, columns=None, condition=None):
         rows = self.file_headler.read_all()
         result = []
