@@ -16,6 +16,8 @@ class DeleteOperation:
                 kept_rows.append(row)
             else:
                 deleted_count += 1
-
-        table.file_headler.write_all(kept_rows)
-        return f"{deleted_count} deleted logs"
+        if kept_rows:
+            table.file_handler.write_all(kept_rows)
+            return f"{deleted_count} logs deleted."
+        else:
+            return "No logs to delete."
