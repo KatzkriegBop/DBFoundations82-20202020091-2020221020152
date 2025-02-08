@@ -20,7 +20,10 @@ class FileHandler:
 
     def write_all(self, rows):
         with open(self.filename, 'w', encoding='utf-8') as f:
-            f.write(ROW_SEPARATOR.join(rows))
+            for row in rows:
+                print(row)
+                f.write(row + '\n')
+                #f.write(FIELD_SEPARATOR.join(row) + '\n')
 
     def append_row(self, row):
         current_content = self.read_all()

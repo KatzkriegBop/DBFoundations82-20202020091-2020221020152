@@ -2,7 +2,7 @@ class UpdateOperation:
     @staticmethod
     def execute(database, table_name, values, condition=None):
         if table_name not in database.metadata:
-            return "Error: La tabla no existe"
+            return "Error: Table doesn't exist"
 
         table = database.tables[table_name]
         rows = table.file_headler.read_all()
@@ -19,4 +19,4 @@ class UpdateOperation:
             updated_rows.append(table.dict_to_row(row_dict))
 
         table.file_headler.write_all(updated_rows)
-        return f"Actualizados {updates_count} registros"
+        return f"{updates_count} updated logs"
