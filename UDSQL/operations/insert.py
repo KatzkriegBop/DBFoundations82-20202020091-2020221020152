@@ -1,6 +1,17 @@
+""" 
+This module implements the InsertOperation class, 
+which is responsible for inserting data into a table. 
+"""
 from core.database import table
-
 class InsertOperation:
+    """
+    This class is responsible for inserting data into a table.
+
+    Attributes:
+        None
+    Methods:
+    staticmethod execute: Inserts data into a table.
+    """
     @staticmethod
     def execute(database, table_name, values):
         if table_name not in database.tables:

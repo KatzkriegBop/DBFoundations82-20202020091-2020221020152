@@ -1,6 +1,28 @@
+""" 
+This Module implements the DeleteOperation class, which 
+is responsible for deleting data from a table. 
+"""
 class DeleteOperation:
+    """
+    This class is responsible for deleting data from a table.
+    Attributes:
+        None
+    Methods:
+    staticmethod execute: Deletes data from a table.
+    """
     @staticmethod
     def execute(database, table_name, condition=None):
+        """
+        Deletes data from a table.
+        Args:
+            database (Database): The database object.
+            table_name (str): The name of the table.
+            condition (function): A function that returns True if the row should be deleted, False otherwise.
+        Returns:
+            str: A message with the number of deleted logs.
+            str: A message if there are no logs to delete.
+            error: A message if the table doesn't exist.
+        """
         if table_name not in database.metadata:
             return "Error: Table doesn't exist"
 

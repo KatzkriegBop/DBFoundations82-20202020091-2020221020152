@@ -1,3 +1,25 @@
+"""
+Main menu module for UDSQL.
+
+This module contains the necessary functions to display an interactive menu and manage user selections for a Game Console.
+and manage user selections for a Game Console.
+
+AUTHORS: Kevin Estiven Lozano Duarte <kelozanod@udistrital.edu.co>
+            Juan David Quiroga <jdquirogag@udistrital.edu.co>
+            Juan Pablo Borja Espitia <jpborjae@udistrital.edu.co>
+
+
+This file is part of WORKSHOPNo3.
+
+WORKSHOPNo3 is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version.
+
+WORKSHOPNo3 is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with WORKSHOPNo1. If not, see <https://www.gnu.org/licenses/>.
+
+"""
 import cmd
 from core.database import database
 from operations.create import CreateOperation
@@ -7,21 +29,49 @@ from operations.update import UpdateOperation
 from operations.delete import DeleteOperation
 
 class UDSQLShell(cmd.Cmd):
+    
+    """UDSQL Shell Class to manage the shell commands
+
+    Attributes: 
+        intro (str): Welcome message
+        prompt (str): Command prompt
+        db (database): Database object
+    Methods:
+        do_exit: Exit program
+        do_create: Create a new table
+        do_insert: Insert data
+        do_select: Select data
+        do_update: Update data
+        do_delete: Delete data
+    """
     intro = 'Welcome to UDSQL. Type help or "?" to list the commands.\n'
     prompt = 'UDSQL> '
 
-    #Constructor method
+    
     def __init__(self):
+        """Constructor"""
         super().__init__()
         self.db = database()
 
     def do_exit(self, _):
-        """Exit program"""
+        """Exit program
+        
+        Usage: exit
+        Output: Goodbye message
+        """
         print("¡See you next time!")
         return True
 
     def do_create(self, arg):
-        """Create a new table: CREATE table_name col1:type col2:type ..."""
+        """Create a new table.
+
+        Args:
+            arg (str): Table name and columns
+            arg format: table_name col1:type col2:type ...
+        Returns:
+            str: Success message
+        Usage: CREATE table_name col1:type col2:type ...
+        """
         try:
             if not arg:
                 print("Error: Must specify table name and columns")
@@ -49,7 +99,14 @@ class UDSQLShell(cmd.Cmd):
             print(f"Value Error: {str(e)}")
             
     def do_insert(self, arg):
-        """Insert data: INSERT table_name col1=value1 col2=value2 ..."""
+        """Insert data into a table.
+
+        Usage: INSERT table_name col1=value1 col2=value2 ...
+            arg (str): Table name and values
+            arg format: table_name col1=value1 col2=value2 ...
+        Returns:
+            str: Success message
+        """
         try:
             if not arg:
                 print("Error: Must specify table name and values")
@@ -74,7 +131,17 @@ class UDSQLShell(cmd.Cmd):
             print(f"Value Error: {str(e)}")
 
     def do_select(self, arg):
-        """Select data: SELECT table_name [col1 col2 ...] [WHERE col=val]"""
+        """Retrieve data from a table.
+
+        Usage: SELECT table_name [col1 col2 ...] [WHERE col=val]
+        Args:
+            arg (str): Table name and columns
+            arg format: table_name [col1 col2 ...] [WHERE col=val]
+            arg example: logs timestamp message WHERE level=INFO
+        Returns:
+            str: Success message
+            str: Error message
+        """
         try:
             if not arg:
                 print("Error: Must specify table name")
@@ -114,7 +181,16 @@ class UDSQLShell(cmd.Cmd):
             print(f"Value Error: {str(e)}")
                 
     def do_update(self, arg):
-        """Update data: UPDATE table_name col1=value1 col2=value2 ... [WHERE col=val]"""
+        """Update data: UPDATE table_name col1=value1 col2=value2 ... [WHERE col=val]
+
+        Args:
+            arg (str): Table name and values
+            arg format: table_name col1=value1 col2=value2 ... [WHERE col=val]
+            arg example: logs message=NewMessage WHERE level=INFO
+        Returns:
+            str: Success message
+            str: Error message
+        """
         try:
             if not arg:
                 print("Error: Must specify table name and values")
@@ -152,7 +228,17 @@ class UDSQLShell(cmd.Cmd):
         except ValueError as e:
             print(f"Value Error: {str(e)}")
     def do_delete(self, arg):
-        """Delete data: DELETE table_name [WHERE col=val]"""
+        """Delete data from a table.
+
+        Usage: DELETE table_name [WHERE col=val]
+        Args:
+            arg (str): Table name and values
+            arg format: table_name [WHERE col=val]
+            arg example: logs WHERE level=INFO
+        Returns:
+            str: Success message
+            str: Error message
+        """
         try:
             if not arg:
                 print("Error: Must specify table name")

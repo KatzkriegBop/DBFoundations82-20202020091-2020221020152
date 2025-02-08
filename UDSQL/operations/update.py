@@ -1,6 +1,28 @@
+"""
+This module implements the UpdateOperation class, which is 
+responsible for updating the data in a table.
+"""
 class UpdateOperation:
+    """
+    This class is responsible for updating the data in a table.
+
+    Attributes:
+        None
+    Methods:
+        staticmethod execute: Updates the data in a table.
+    """
     @staticmethod
     def execute(database, table_name, values, condition=None):
+        """
+        Updates the data in a table.
+        Args:
+            database (Database): The database object.
+            table_name (str): The name of the table.
+            values (dict): A dictionary with the values to be updated.
+            condition (function): A function that returns True if the row should be updated, False otherwise.
+        Returns:
+            str: A message with the number of updated logs.
+        """
         if table_name not in database.metadata:
             return "Error: Table doesn't exist"
 
